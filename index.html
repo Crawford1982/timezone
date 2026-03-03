@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TimeSync is a free timezone overlap visualizer for remote teams that helps you quickly find meeting times across time zones and share them in one link.">
+    <title>TimeSync - Remote Team Overlap Visualizer</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE0E74V2HF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GE0E74V2HF');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            850: '#151e2e',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .timeline-scroll::-webkit-scrollbar { height: 8px; }
+        .timeline-scroll::-webkit-scrollbar-track { background: #1e293b; border-radius: 4px; }
+        .timeline-scroll::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        .timeline-scroll::-webkit-scrollbar-thumb:hover { background: #64748b; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 min-h-screen flex flex-col font-sans selection:bg-emerald-500/30 pb-16">
+
+    <!-- Sponsored Banner -->
+    <div class="bg-indigo-600 text-white text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <i data-lucide="star" class="w-4 h-4"></i>
+        Sponsored by [Your Company] - The Best Way to Hire Remote.
+    </div>
+
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-5xl">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                Time<span class="text-emerald-400">Sync</span>
+            </h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                Shareable Timezone Visualizer for Remote Teams. Find the perfect overlap for your next meeting.
+            </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700 mb-8">
+            <div class="flex flex-col md:flex-row gap-4 items-start md:items-end">
+                <div class="flex-grow w-full relative">
+                    <label for="tz-input" class="block text-sm font-medium text-slate-400 mb-2">Add Timezone (Max 5)</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-lucide="search" class="w-5 h-5 text-slate-500"></i>
+                        </div>
+                        <input type="text" id="tz-input" autocomplete="off" placeholder="Search city or timezone (e.g., Tokyo, Europe/London)" 
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl py-3 pl-10 pr-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all">
+                    </div>
+                    <div id="autocomplete-dropdown" class="absolute z-10 w-full mt-1 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl max-h-60 overflow-y-auto hidden">
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-auto">
+                    <label for="date-input" class="block text-sm font-medium text-slate-400 mb-2">Date</label>
+                    <input type="date" id="date-input" class="w-full bg-slate-900 border border-slate-700 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all">
+                </div>
+
+                <button id="copy-link-btn" class="w-full md:w-auto flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl font-medium transition-colors shadow-lg shadow-emerald-500/20 whitespace-nowrap">
+                    <i data-lucide="link" class="w-5 h-5"></i>
+                    <span>Copy Share Link</span>
+                </button>
+            </div>
+
+            <div id="selected-zones" class="flex flex-wrap gap-2 mt-4"></div>
+        </div>
+
+        <!-- Explainer / Tips -->
+        <div class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 mb-6 flex items-start gap-3">
+            <i data-lucide="lightbulb" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5"></i>
+            <div class="text-sm text-slate-300">
+                <p><strong class="text-white">Quick Tips:</strong></p>
+                <ul class="list-disc pl-4 mt-1 space-y-1 text-slate-400">
+                    <li>Click any <strong class="text-slate-300">timezone name</strong> to rename it to a person or team (e.g., "Sarah").</li>
+                    <li>Click any <strong class="text-slate-300">hour block</strong> in the timeline to instantly copy the meeting times to your clipboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Visualizer -->
+        <div class="bg-slate-800 rounded-2xl shadow-xl border border-slate-700 overflow-hidden">
+            <div class="p-6 border-b border-slate-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <h2 class="text-xl font-semibold text-white flex items-center gap-2">
+                    <i data-lucide="clock" class="w-5 h-5 text-emerald-400"></i>
+                    Overlap Visualizer
+                </h2>
+                <div class="flex items-center gap-2 text-sm">
+                    <div class="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/50"></div>
+                    <span class="text-slate-400">Business Hours (9 AM - 5 PM)</span>
+                </div>
+            </div>
+            
+            <div class="p-6 overflow-x-auto timeline-scroll">
+                <div id="timeline-container" class="min-w-[800px]">
+                    <div id="timeline-header" class="flex mb-4 relative ml-48"></div>
+                    <div id="timezone-rows" class="flex flex-col gap-4"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 mt-auto py-8 text-center">
+        <p class="text-slate-500 text-sm mb-4">Built with native JS & Tailwind CSS.</p>
+        <div class="flex items-center justify-center gap-6">
+            <a href="#" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors text-sm font-medium">
+                <i data-lucide="coffee" class="w-4 h-4"></i>
+                Buy me a coffee
+            </a>
+            <button onclick="openPrivacyModal()" class="text-slate-400 hover:text-slate-300 transition-colors text-sm font-medium">
+                Privacy Policy
+            </button>
+        </div>
+    </footer>
+
+    <!-- Consent Banner -->
+    <div id="consent-banner" class="fixed bottom-0 left-0 right-0 bg-slate-800 border-t border-slate-700 p-4 z-40 flex flex-col sm:flex-row items-center justify-center gap-4 hidden shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+        <p class="text-sm text-slate-300 text-center sm:text-left">
+            We use cookies to improve your experience and analyze site traffic. 
+            <button onclick="openPrivacyModal()" class="text-emerald-400 hover:underline">Read our Privacy Policy</button>.
+        </p>
+        <button onclick="acceptCookies()" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors">
+            Accept
+        </button>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300" id="privacy-modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-white">Privacy Policy</h2>
+                <button onclick="closePrivacyModal()" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="text-slate-300 text-sm space-y-4">
+                <p><strong>Last Updated:</strong> March 2026</p>
+                <p>Welcome to TimeSync. We respect your privacy and are committed to protecting your personal data.</p>
+                
+                <h3 class="text-white font-semibold mt-4 text-base">1. Information We Collect</h3>
+                <p>We use Google Analytics to collect basic, anonymous usage data (such as page views and browser types) to help us improve the tool. We do not collect personally identifiable information (PII) like your name or email address.</p>
+                
+                <h3 class="text-white font-semibold mt-4 text-base">2. Cookies</h3>
+                <p>We use cookies to store your consent preferences and for Google Analytics tracking. You can clear these cookies at any time through your browser settings.</p>
+                
+                <h3 class="text-white font-semibold mt-4 text-base">3. Data Storage</h3>
+                <p>TimeSync is a client-side application. Your timezone configurations, dates, and aliases are stored entirely in the URL parameters and are not saved to any database or server.</p>
+                
+                <h3 class="text-white font-semibold mt-4 text-base">4. Contact</h3>
+                <p>If you have any questions about this privacy policy, please contact us.</p>
+            </div>
+            <button onclick="closePrivacyModal()" class="mt-8 w-full bg-slate-700 hover:bg-slate-600 text-white px-4 py-3 rounded-xl font-medium transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Rename Modal -->
+    <div id="rename-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 max-w-sm w-full shadow-2xl transform scale-95 transition-transform duration-300" id="rename-modal-content">
+            <h3 class="text-lg font-bold text-white mb-2">Rename Timezone</h3>
+            <p class="text-sm text-slate-400 mb-4">Give this timezone a custom name (e.g., "Sarah" or "Design Team"). Leave blank to reset.</p>
+            <input type="text" id="rename-input" class="w-full bg-slate-900 border border-slate-700 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 mb-6" placeholder="Enter name...">
+            <div class="flex justify-end gap-3">
+                <button onclick="closeRenameModal()" class="px-4 py-2 text-slate-400 hover:text-white transition-colors font-medium">Cancel</button>
+                <button onclick="saveRename()" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-xl font-medium transition-colors">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-slate-800 border border-slate-700 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none">
+        <div class="bg-emerald-500/20 text-emerald-400 p-1 rounded-lg">
+            <i data-lucide="check" class="w-5 h-5"></i>
+        </div>
+        <span id="toast-message" class="font-medium">Link copied to clipboard!</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const commonTimezones = [
+            // UTC & GMT
+            "UTC", "GMT",
+            
+            // North America
+            "America/New_York", "America/Chicago", "America/Denver", "America/Los_Angeles",
+            "America/Phoenix", "America/Anchorage", "Pacific/Honolulu",
+            "America/Toronto", "America/Vancouver", "America/Montreal", "America/Edmonton",
+            "America/Mexico_City", "America/Monterrey", "America/Cancun",
+            
+            // Central & South America
+            "America/Sao_Paulo", "America/Buenos_Aires", "America/Bogota", "America/Lima",
+            "America/Santiago", "America/Caracas", "America/Guayaquil", "America/Panama",
+            
+            // Europe
+            "Europe/London", "Europe/Paris", "Europe/Berlin", "Europe/Rome", "Europe/Madrid",
+            "Europe/Amsterdam", "Europe/Brussels", "Europe/Vienna", "Europe/Zurich",
+            "Europe/Stockholm", "Europe/Oslo", "Europe/Copenhagen", "Europe/Helsinki",
+            "Europe/Moscow", "Europe/Istanbul", "Europe/Athens", "Europe/Bucharest",
+            "Europe/Warsaw", "Europe/Prague", "Europe/Budapest", "Europe/Dublin",
+            "Europe/Lisbon", "Europe/Kiev", "Europe/Belgrade",
+            
+            // Asia
+            "Asia/Dubai", "Asia/Riyadh", "Asia/Jerusalem", "Asia/Tehran", "Asia/Baghdad",
+            "Asia/Kolkata", "Asia/Mumbai", "Asia/Delhi", "Asia/Dhaka", "Asia/Karachi", "Asia/Colombo",
+            "Asia/Bangkok", "Asia/Jakarta", "Asia/Ho_Chi_Minh", "Asia/Kuala_Lumpur", "Asia/Manila",
+            "Asia/Singapore", "Asia/Hong_Kong", "Asia/Shanghai", "Asia/Beijing", "Asia/Taipei",
+            "Asia/Tokyo", "Asia/Seoul", "Asia/Pyongyang", "Asia/Almaty", "Asia/Tashkent",
+            
+            // Australia & Pacific
+            "Australia/Sydney", "Australia/Melbourne", "Australia/Brisbane", "Australia/Perth",
+            "Australia/Adelaide", "Australia/Hobart", "Australia/Darwin",
+            "Pacific/Auckland", "Pacific/Fiji", "Pacific/Guam", "Pacific/Port_Moresby",
+            
+            // Africa
+            "Africa/Cairo", "Africa/Johannesburg", "Africa/Lagos", "Africa/Nairobi",
+            "Africa/Casablanca", "Africa/Accra", "Africa/Addis_Ababa", "Africa/Dar_es_Salaam",
+            "Africa/Khartoum", "Africa/Luanda", "Africa/Dakar"
+        ];
+
+        let selectedZones = [];
+        const MAX_ZONES = 5;
+        
+        // Date handling
+        const dateInput = document.getElementById('date-input');
+        const today = new Date();
+        const localISODate = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+        dateInput.value = localISODate;
+        let baseDate = new Date();
+
+        const tzInput = document.getElementById('tz-input');
+        const dropdown = document.getElementById('autocomplete-dropdown');
+        const selectedZonesContainer = document.getElementById('selected-zones');
+        const timelineHeader = document.getElementById('timeline-header');
+        const timezoneRowsContainer = document.getElementById('timezone-rows');
+        const copyBtn = document.getElementById('copy-link-btn');
+        const toast = document.getElementById('toast');
+
+        // Privacy & Consent Logic
+        document.addEventListener("DOMContentLoaded", () => {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('consent-banner').classList.remove('hidden');
+            }
+        });
+
+        window.acceptCookies = function() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('consent-banner').classList.add('hidden');
+        }
+
+        window.openPrivacyModal = function() {
+            const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+        }
+
+        window.closePrivacyModal = function() {
+            const modal = document.getElementById('privacy-modal');
+            const content = document.getElementById('privacy-modal-content');
+            modal.classList.add('opacity-0');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function initFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const zonesParam = params.get('zones');
+            const dateParam = params.get('date');
+            
+            if (dateParam) {
+                dateInput.value = dateParam;
+                const [y, m, d] = dateParam.split('-');
+                baseDate.setFullYear(y, m - 1, d);
+            }
+            
+            if (zonesParam) {
+                selectedZones = zonesParam.split(',').map(z => {
+                    const [tz, alias] = z.split(':');
+                    return { tz, alias: alias ? decodeURIComponent(alias) : '' };
+                }).filter(z => isSupportedTimezone(z.tz)).slice(0, MAX_ZONES);
+            } else {
+                const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                selectedZones = [{ tz: localTz, alias: '' }];
+                updateURL();
+            }
+            renderApp();
+        }
+
+        function isSupportedTimezone(tz) {
+            try {
+                Intl.DateTimeFormat(undefined, { timeZone: tz });
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function updateURL() {
+            const params = new URLSearchParams(window.location.search);
+            
+            if (selectedZones.length > 0) {
+                const zonesStr = selectedZones.map(z => z.alias ? `${z.tz}:${encodeURIComponent(z.alias)}` : z.tz).join(',');
+                params.set('zones', zonesStr);
+            } else {
+                params.delete('zones');
+            }
+            
+            if (dateInput.value && dateInput.value !== localISODate) {
+                params.set('date', dateInput.value);
+            } else {
+                params.delete('date');
+            }
+            
+            const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+
+        function formatTzName(tz) {
+            return tz.replace(/_/g, ' ').split('/').pop();
+        }
+
+        dateInput.addEventListener('change', (e) => {
+            if (e.target.value) {
+                const [y, m, d] = e.target.value.split('-');
+                baseDate.setFullYear(y, m - 1, d);
+                updateURL();
+                renderApp();
+            }
+        });
+
+        tzInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            if (!val) {
+                dropdown.classList.add('hidden');
+                return;
+            }
+
+            const matches = commonTimezones.filter(tz => 
+                tz.toLowerCase().includes(val) || formatTzName(tz).toLowerCase().includes(val)
+            );
+
+            if (matches.length > 0) {
+                dropdown.innerHTML = matches.map(tz => `
+                    <div class="px-4 py-2 hover:bg-slate-700 cursor-pointer text-slate-200 transition-colors flex justify-between items-center" data-tz="${tz}">
+                        <span>${formatTzName(tz)}</span>
+                        <span class="text-xs text-slate-500">${tz}</span>
+                    </div>
+                `).join('');
+                dropdown.classList.remove('hidden');
+            } else {
+                dropdown.innerHTML = `<div class="px-4 py-3 text-slate-500 text-sm">No timezones found</div>`;
+                dropdown.classList.remove('hidden');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!tzInput.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+            
+            if (e.target.id === 'privacy-modal') {
+                closePrivacyModal();
+            }
+            
+            if (e.target.id === 'rename-modal') {
+                closeRenameModal();
+            }
+        });
+
+        dropdown.addEventListener('click', (e) => {
+            const item = e.target.closest('[data-tz]');
+            if (item) {
+                const tz = item.dataset.tz;
+                addZone(tz);
+                tzInput.value = '';
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        function addZone(tz) {
+            if (selectedZones.some(z => z.tz === tz)) {
+                showToast('Timezone already added');
+                return;
+            }
+            if (selectedZones.length >= MAX_ZONES) {
+                showToast(`Maximum ${MAX_ZONES} timezones allowed`);
+                return;
+            }
+            
+            selectedZones.push({ tz, alias: '' });
+            updateURL();
+            renderApp();
+        }
+
+        window.removeZone = function(tz) {
+            selectedZones = selectedZones.filter(z => z.tz !== tz);
+            if (selectedZones.length === 0) {
+                selectedZones = [{ tz: Intl.DateTimeFormat().resolvedOptions().timeZone, alias: '' }];
+            }
+            updateURL();
+            renderApp();
+        }
+
+        let currentRenameTz = null;
+
+        window.openRenameModal = function(tz) {
+            currentRenameTz = tz;
+            const zone = selectedZones.find(z => z.tz === tz);
+            if (!zone) return;
+            
+            const input = document.getElementById('rename-input');
+            input.value = zone.alias || "";
+            
+            const modal = document.getElementById('rename-modal');
+            const content = document.getElementById('rename-modal-content');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth; // trigger reflow
+            modal.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+            input.focus();
+        }
+
+        window.closeRenameModal = function() {
+            const modal = document.getElementById('rename-modal');
+            const content = document.getElementById('rename-modal-content');
+            modal.classList.add('opacity-0');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            currentRenameTz = null;
+        }
+
+        window.saveRename = function() {
+            if (!currentRenameTz) return;
+            const zone = selectedZones.find(z => z.tz === currentRenameTz);
+            if (zone) {
+                const input = document.getElementById('rename-input');
+                zone.alias = input.value.trim();
+                updateURL();
+                renderApp();
+            }
+            closeRenameModal();
+        }
+
+        // Allow Enter key to save
+        document.getElementById('rename-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                saveRename();
+            }
+        });
+
+        function escapeHTML(str) {
+            if (!str) return "";
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function renderBadges() {
+            selectedZonesContainer.innerHTML = selectedZones.map(zone => `
+                <div class="flex items-center gap-2 bg-slate-700/50 border border-slate-600 text-slate-200 px-3 py-1.5 rounded-lg text-sm group">
+                    <span class="cursor-pointer hover:text-white border-b border-dashed border-transparent hover:border-slate-400 transition-colors" onclick="openRenameModal('${zone.tz}')" title="Click to rename">
+                        ${escapeHTML(zone.alias) || formatTzName(zone.tz)}
+                    </span>
+                    ${selectedZones.length > 1 ? `
+                        <button onclick="removeZone('${zone.tz}')" class="text-slate-400 hover:text-red-400 transition-colors ml-1">
+                            <i data-lucide="x" class="w-4 h-4"></i>
+                        </button>
+                    ` : ''}
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function getOffsetInMinutes(date, tz) {
+            // Get the timezone offset in minutes relative to UTC
+            const tzDate = new Date(date.toLocaleString('en-US', { timeZone: tz }));
+            const utcDate = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
+            return (tzDate - utcDate) / 60000;
+        }
+
+        function renderTimeline() {
+            if (selectedZones.length === 0) return;
+
+            const baseTz = selectedZones[0].tz;
+            const hours = Array.from({length: 24}, (_, i) => i);
+
+            timelineHeader.innerHTML = hours.map(h => `
+                <div class="flex-1 text-center min-w-[40px] text-xs text-slate-500 font-medium">
+                    ${h.toString().padStart(2, '0')}:00
+                </div>
+            `).join('');
+
+            timezoneRowsContainer.innerHTML = selectedZones.map(zone => {
+                const tzName = escapeHTML(zone.alias) || formatTzName(zone.tz);
+                const originalTzName = formatTzName(zone.tz);
+                
+                // Calculate exact minute difference from base timezone
+                const baseOffset = getOffsetInMinutes(baseDate, baseTz);
+                const targetOffset = getOffsetInMinutes(baseDate, zone.tz);
+                
+                let diffMinutes = targetOffset - baseOffset;
+                
+                // Handle day wrapping
+                if (diffMinutes < -720) diffMinutes += 1440;
+                if (diffMinutes > 720) diffMinutes -= 1440;
+                
+                const diffHours = Math.floor(diffMinutes / 60);
+                const extraMinutes = Math.abs(diffMinutes % 60);
+                
+                // If there's a 30 or 45 min offset, we shift the entire row visually
+                const shiftPercentage = (extraMinutes / 60) * 100;
+                const isPositiveShift = diffMinutes > 0;
+                
+                const blocksHtml = hours.map((h, i) => {
+                    let blockHour = (h + diffHours) % 24;
+                    if (blockHour < 0) blockHour += 24;
+                    
+                    const isGolden = blockHour >= 9 && blockHour < 17;
+                    
+                    return `
+                        <div class="hour-block flex-1 min-w-[40px] h-12 border-r border-slate-700/50 flex items-center justify-center text-sm transition-colors cursor-pointer relative
+                            ${isGolden ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400 font-medium is-golden' : 'text-slate-400 hover:bg-slate-700/30'}
+                            ${blockHour === 0 ? 'border-l-2 border-l-indigo-500/50' : ''}"
+                            data-col="${i}" onclick="copyColumnAsText(${i})" title="Click to copy times">
+                            ${blockHour}${extraMinutes > 0 ? `<span class="text-[10px] opacity-50 absolute bottom-1 right-1">:${extraMinutes}</span>` : ''}
+                        </div>
+                    `;
+                }).join('');
+
+                // Current time indicator always uses real 'now'
+                const now = new Date();
+                const currentTime = new Intl.DateTimeFormat('en-US', {
+                    timeZone: zone.tz,
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                }).format(now);
+
+                const parts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: zone.tz,
+                    hour: 'numeric',
+                    hour12: false
+                }).formatToParts(now);
+                const hourPart = parts.find(p => p.type === 'hour').value;
+                let currentHour = parseInt(hourPart);
+                if (currentHour === 24) currentHour = 0;
+                
+                const isBusinessNow = currentHour >= 9 && currentHour < 17;
+
+                return `
+                    <div class="flex items-center group">
+                        <div class="w-48 shrink-0 pr-4 flex flex-col justify-center">
+                            <div class="font-medium text-slate-200 truncate cursor-pointer hover:text-white transition-colors" onclick="openRenameModal('${zone.tz}')" title="Click to rename">${tzName}</div>
+                            <div class="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+                                <span class="w-2 h-2 rounded-full ${isBusinessNow ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]' : 'bg-slate-600'}"></span>
+                                ${currentTime} ${zone.alias ? `<span class="opacity-50">(${originalTzName})</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="flex flex-1 bg-slate-900/50 rounded-lg border border-slate-700/50 overflow-hidden relative">
+                            <!-- Visual shift for half-hour timezones -->
+                            <div class="flex w-full absolute inset-0" style="transform: translateX(${isPositiveShift ? '-' : ''}${shiftPercentage}%);">
+                                ${blocksHtml}
+                            </div>
+                            <!-- Placeholder to maintain height since inner is absolute -->
+                            <div class="h-12 w-full invisible"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Interactive Vertical Hovering
+        document.addEventListener('mouseover', e => {
+            const block = e.target.closest('.hour-block');
+            if (block) {
+                const col = block.dataset.col;
+                document.querySelectorAll(`.hour-block[data-col="${col}"]`).forEach(el => {
+                    el.classList.add('bg-slate-700', 'ring-1', 'ring-inset', 'ring-slate-400');
+                });
+            }
+        });
+        
+        document.addEventListener('mouseout', e => {
+            const block = e.target.closest('.hour-block');
+            if (block) {
+                const col = block.dataset.col;
+                document.querySelectorAll(`.hour-block[data-col="${col}"]`).forEach(el => {
+                    el.classList.remove('bg-slate-700', 'ring-1', 'ring-inset', 'ring-slate-400');
+                });
+            }
+        });
+
+        // Copy as Text for Emails
+        window.copyColumnAsText = function(colIndex) {
+            if (selectedZones.length === 0) return;
+            
+            const baseTz = selectedZones[0].tz;
+            
+            const dateStr = new Intl.DateTimeFormat('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(baseDate);
+            let text = `Let's meet on ${dateStr}:\n\n`;
+            
+            selectedZones.forEach(zone => {
+                const tzName = zone.alias || formatTzName(zone.tz);
+                
+                const baseOffset = getOffsetInMinutes(baseDate, baseTz);
+                const targetOffset = getOffsetInMinutes(baseDate, zone.tz);
+                
+                let diffMinutes = targetOffset - baseOffset;
+                if (diffMinutes < -720) diffMinutes += 1440;
+                if (diffMinutes > 720) diffMinutes -= 1440;
+                
+                const diffHours = Math.floor(diffMinutes / 60);
+                const extraMinutes = Math.abs(diffMinutes % 60);
+                
+                let blockHour = (colIndex + diffHours) % 24;
+                if (blockHour < 0) blockHour += 24;
+                
+                const ampm = blockHour >= 12 ? 'PM' : 'AM';
+                const displayHour = blockHour % 12 || 12;
+                const minStr = extraMinutes > 0 ? extraMinutes.toString().padStart(2, '0') : '00';
+                const timeString = `${displayHour}:${minStr} ${ampm}`;
+                
+                text += `• ${timeString} - ${tzName}\n`;
+            });
+            
+            text += `\nSee overlap: ${window.location.href}`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Meeting times copied to clipboard!');
+            });
+        }
+
+        function renderApp() {
+            renderBadges();
+            renderTimeline();
+        }
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Share link copied to clipboard!');
+            });
+        });
+
+        let toastTimeout;
+        function showToast(msg) {
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        window.addEventListener('popstate', () => {
+            initFromURL();
+        });
+
+        initFromURL();
+        setInterval(renderTimeline, 60000);
+    </script>
+</body>
+</html>
+
