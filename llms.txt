@@ -1,0 +1,7 @@
+# SyncZones AI crawler policy
+
+# You can adjust this later if your preferences change.
+
+allow: *
+site: https://www.synczones.app/
+

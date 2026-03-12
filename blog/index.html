@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncZones Blog - Remote Team Timezones & Meetings</title>
+    <meta name="description" content="Deep dives on timezones, remote work, and how to run better meetings across distributed teams.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://synczones.app/blog/">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+    <header class="border-b border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 text-slate-100">
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/40">
+                    <span class="w-4 h-4 rounded-full bg-emerald-400/80"></span>
+                </span>
+                <span class="font-semibold tracking-tight">Time<span class="text-emerald-400">Sync</span></span>
+            </a>
+            <a href="/" class="text-sm text-slate-400 hover:text-slate-100 transition-colors">Back to app</a>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-5xl mx-auto px-4 py-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">SyncZones Blog</h1>
+        <p class="text-slate-400 mb-8 max-w-2xl">
+            Essays and guides on working across timezones, running better remote meetings, and building healthy async cultures.
+        </p>
+
+        <div class="space-y-6">
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/best-meeting-time-new-york-lagos/" class="hover:text-emerald-400 transition-colors">
+                        Best Meeting Time Between New York and Lagos
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    A practical guide to the New York–Lagos time difference, overlap window, DST shifts, and async strategy for US–Nigeria remote teams.
+                </p>
+            </article>
+
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/best-free-timezone-overlap-tools/" class="hover:text-emerald-400 transition-colors">
+                        7 Best Free Timezone Overlap Tools for Remote Teams (2026)
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    Hands-on comparison of the top free timezone overlap tools, from World Time Buddy to TimeSync, with real-world pros and cons.
+                </p>
+            </article>
+
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/dst-gap-us-europe-meetings/" class="hover:text-emerald-400 transition-colors">
+                        The 3-Week DST Gap: Why Your US–Europe Meetings Break Every March
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    Why your recurring US–Europe meetings silently shift by an hour every March and October, with exact 2026 dates and a simple 4-step fix.
+                </p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 py-6 text-center text-sm text-slate-500">
+        © <span id="year"></span> SyncZones. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
