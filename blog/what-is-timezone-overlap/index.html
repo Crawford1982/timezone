@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is Timezone Overlap? A Complete Guide for Remote Teams (2026)</title>
+  <meta name="description" content="Timezone overlap is the shared window when two or more distributed teams are simultaneously within working hours. Learn how to calculate it, why it matters, and how to use a free visualizer.">
+  <meta name="keywords" content="what is timezone overlap, timezone overlap definition, remote team timezone overlap, working hours overlap, distributed team scheduling">
+  <link rel="canonical" href="https://synczones.app/blog/what-is-timezone-overlap/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="What Is Timezone Overlap? A Complete Guide for Remote Teams (2026)">
+  <meta property="og:description" content="Timezone overlap is the shared window when distributed teams are simultaneously within working hours. Learn how to calculate it, why it matters, and how to find it instantly.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://synczones.app/blog/what-is-timezone-overlap/">
+  <meta property="og:image" content="https://synczones.app/og-image.png">
+  <meta property="og:site_name" content="SyncZones">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://synczones.app/og-image.png">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE0E74V2HF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GE0E74V2HF');
+  </script>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Is Timezone Overlap? A Complete Guide for Remote Teams (2026)",
+    "description": "Timezone overlap is the shared window when two or more distributed teams are simultaneously within working hours. A complete guide to calculating and visualizing it.",
+    "author": { "@type": "Organization", "name": "SyncZones", "url": "https://synczones.app" },
+    "publisher": { "@type": "Organization", "name": "SyncZones", "url": "https://synczones.app" },
+    "datePublished": "2026-03-21",
+    "dateModified": "2026-03-21",
+    "mainEntityOfPage": "https://synczones.app/blog/what-is-timezone-overlap/"
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://synczones.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://synczones.app/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "What Is Timezone Overlap?", "item": "https://synczones.app/blog/what-is-timezone-overlap/" }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is timezone overlap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Timezone overlap is the period during which two or more teams in different time zones are simultaneously within their standard working hours (typically 9 AM–5 PM local time). For example, London (GMT) and New York (EST/EDT) have a 4–5 hour overlap window during standard business hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you calculate timezone overlap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To calculate timezone overlap: (1) Identify each team's working hours in UTC, (2) Find the intersection of those UTC windows. For example, London 9–17 UTC and New York 14–22 UTC overlap from 14:00–17:00 UTC, giving a 3-hour window. A free tool like SyncZones does this calculation instantly for up to 5 time zones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much timezone overlap do remote teams need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most remote teams function well with 2–4 hours of daily overlap. This is enough time for a standup, async reviews, and one longer synchronous meeting. Teams with less than 1 hour of overlap typically rely primarily on asynchronous communication with occasional early or late meetings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is zero timezone overlap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zero timezone overlap (also called 'opposite time zones') means the teams' standard working hours do not intersect at all. A team in New York (EST) and a team in Tokyo (JST) have roughly 0–1 hours of overlap in standard business hours. These teams typically operate fully asynchronously with handoff-based workflows."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #cbd5e1; line-height: 1.7; }
+    a { color: #10b981; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 0 1.5rem; }
+    nav { border-bottom: 1px solid #1e293b; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; }
+    nav .brand { font-weight: 700; font-size: 1.05rem; color: #f1f5f9; display: flex; align-items: center; gap: 0.5rem; }
+    nav .brand span.dot { width: 10px; height: 10px; background: #10b981; border-radius: 50%; display: inline-block; }
+    nav .links a { font-size: 0.875rem; color: #94a3b8; margin-left: 1.25rem; }
+    nav .links a:hover { color: #f1f5f9; }
+    .breadcrumb { font-size: 0.8rem; color: #475569; margin: 1.5rem 0 0.5rem; }
+    .breadcrumb a { color: #475569; }
+    .breadcrumb a:hover { color: #94a3b8; }
+    .post-header { padding: 2rem 0 1.5rem; border-bottom: 1px solid #1e293b; margin-bottom: 2rem; }
+    .post-meta { font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .post-meta .tag { background: #10b98120; color: #10b981; padding: 0.2rem 0.6rem; border-radius: 999px; font-weight: 500; }
+    h1 { font-size: 2rem; font-weight: 800; color: #f1f5f9; line-height: 1.25; margin-bottom: 1rem; }
+    h2 { font-size: 1.35rem; font-weight: 700; color: #f1f5f9; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; color: #e2e8f0; margin: 1.75rem 0 0.5rem; }
+    p { margin-bottom: 1.1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    li { margin-bottom: 0.4rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    th { background: #1e293b; color: #94a3b8; text-align: left; padding: 0.6rem 0.8rem; font-weight: 600; border: 1px solid #334155; }
+    td { padding: 0.6rem 0.8rem; border: 1px solid #1e293b; }
+    tr:nth-child(even) td { background: #0f172a; }
+    tr:nth-child(odd) td { background: #111827; }
+    .callout { background: #0f2942; border-left: 3px solid #10b981; padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1.5rem 0; font-size: 0.95rem; color: #94a3b8; }
+    .callout strong { color: #f1f5f9; }
+    .tool-cta { background: #0f172a; border: 1px solid #10b981; border-radius: 1rem; padding: 1.5rem; text-align: center; margin: 2.5rem 0; }
+    .tool-cta p { color: #94a3b8; margin-bottom: 0.75rem; font-size: 0.95rem; }
+    .tool-cta a { display: inline-block; background: #10b981; color: #fff; padding: 0.65rem 1.5rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.95rem; }
+    .tool-cta a:hover { background: #059669; text-decoration: none; }
+    .related-posts { background: #1e293b; border-radius: 1rem; padding: 1.5rem; margin: 2rem 0; }
+    .related-posts h3 { margin-top: 0; color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .related-posts ul { list-style: none; padding: 0; margin: 0; }
+    .related-posts li { padding: 0.4rem 0; border-bottom: 1px solid #334155; }
+    .related-posts li:last-child { border-bottom: none; }
+    .author-box { margin-top: 3rem; padding: 1.5rem; background: #1e293b; border-radius: 1rem; border: 1px solid #334155; display: flex; align-items: flex-start; gap: 1rem; }
+    .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: #10b981; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 1.2rem; flex-shrink: 0; }
+    .author-name { font-weight: 600; color: #f1f5f9; margin-bottom: 0.25rem; }
+    .author-bio { color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem; }
+    footer { border-top: 1px solid #1e293b; padding: 2rem 0; text-align: center; font-size: 0.85rem; color: #475569; margin-top: 3rem; }
+    footer a { color: #64748b; }
+    @media (max-width: 600px) { h1 { font-size: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+<nav class="wrap">
+  <a href="/" class="brand"><span class="dot"></span> Time<span style="color:#10b981">Sync</span> by SyncZones</a>
+  <div class="links">
+    <a href="/">Tool</a>
+    <a href="/blog/">Blog</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <p class="breadcrumb"><a href="/">Home</a> › <a href="/blog/">Blog</a> › What Is Timezone Overlap?</p>
+
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="tag">Scheduling Guide</span>
+      <time datetime="2026-03-21">March 21, 2026</time>
+      <span>8 min read</span>
+    </div>
+    <h1>What Is Timezone Overlap? A Complete Guide for Remote Teams (2026)</h1>
+    <p style="color:#94a3b8;font-size:1.05rem;">Timezone overlap is the shared window when your distributed team members are all simultaneously within working hours. Here's everything you need to know — including how to calculate it, why it matters, and how to find it in seconds.</p>
+  </header>
+
+  <nav style="background:#1e293b;border-radius:0.75rem;padding:1rem 1.25rem;margin-bottom:2rem;font-size:0.875rem;">
+    <p style="color:#64748b;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">In this article</p>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:0.5rem 1.25rem;">
+      <li><a href="#definition">Definition</a></li>
+      <li><a href="#how-to-calculate">How to calculate</a></li>
+      <li><a href="#why-it-matters">Why it matters</a></li>
+      <li><a href="#how-much-overlap">How much do you need?</a></li>
+      <li><a href="#common-corridors">Common corridors</a></li>
+      <li><a href="#zero-overlap">Zero overlap</a></li>
+      <li><a href="#dst">DST and overlap shifts</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="definition">Timezone overlap: the definition</h2>
+  <p><strong style="color:#f1f5f9;">Timezone overlap</strong> is the period of time during which two or more people or teams — located in different time zones — are simultaneously within their standard working hours.</p>
+  <p>For example: a team in <strong style="color:#f1f5f9;">London (GMT/BST)</strong> works 9 AM–5 PM local time, which is 09:00–17:00 UTC in winter. A team in <strong style="color:#f1f5f9;">New York (EST/EDT)</strong> works 9 AM–5 PM local time, which is 14:00–22:00 UTC in winter. The two windows overlap from <strong style="color:#f1f5f9;">14:00–17:00 UTC</strong> — a 3-hour shared window. That's the timezone overlap.</p>
+  <p>During US Daylight Saving Time (March–November), New York shifts to EDT (UTC−4), which widens the London–New York overlap to 4 hours: 13:00–17:00 UTC.</p>
+
+  <div class="callout">
+    <strong>Quick definition:</strong> Timezone overlap = the intersection of two or more teams' business hours, expressed in a shared reference time (usually UTC). The larger this window, the more synchronous collaboration is possible.
+  </div>
+
+  <h2 id="how-to-calculate">How to calculate timezone overlap</h2>
+  <p>There are two ways to do this: manually (for understanding the concept) or with a free tool (for practical use).</p>
+
+  <h3>Manual calculation (step by step)</h3>
+  <ol>
+    <li><strong style="color:#e2e8f0;">Convert each team's working hours to UTC.</strong> If your London team works 9–17 GMT, that's 09:00–17:00 UTC. If your New York team works 9–17 EST, that's 14:00–22:00 UTC.</li>
+    <li><strong style="color:#e2e8f0;">Find the intersection.</strong> The overlap starts at the later of the two start times (14:00 UTC) and ends at the earlier of the two end times (17:00 UTC). Result: 14:00–17:00 UTC = 3 hours.</li>
+    <li><strong style="color:#e2e8f0;">Convert back to local time.</strong> 14:00–17:00 UTC = 14:00–17:00 London time = 9:00 AM–12:00 PM New York time.</li>
+    <li><strong style="color:#e2e8f0;">Account for DST.</strong> Recalculate whenever either team transitions in/out of DST.</li>
+  </ol>
+
+  <h3>Using a free overlap visualizer</h3>
+  <p>The manual method works for two time zones but becomes error-prone with three or more — especially when DST is involved. <a href="/">SyncZones</a> handles all of this automatically: add up to 5 time zones, and it instantly draws a color-coded timeline showing exactly where business hours overlap.</p>
+
+  <div class="tool-cta">
+    <p>Find your team's overlap window in under 30 seconds.</p>
+    <a href="/?zones=Europe%2FLondon,America%2FNew_York">Try the Timezone Overlap Visualizer →</a>
+  </div>
+
+  <h2 id="why-it-matters">Why timezone overlap matters for remote teams</h2>
+  <p>The size and quality of your timezone overlap directly affects how your team communicates, how quickly decisions get made, and how fairly work is distributed.</p>
+
+  <h3>Synchronous collaboration</h3>
+  <p>Most real-time collaboration — standups, design reviews, incident calls, client meetings — requires at least some overlap window. A team with 4+ hours of overlap can function similarly to a co-located team. A team with 1–2 hours needs to be deliberate about which meetings are truly synchronous and which can be async.</p>
+
+  <h3>Meeting fairness</h3>
+  <p>Without visibility into the actual overlap window, scheduling tends to default to whatever is convenient for the team in the dominant timezone. This means someone in Singapore is always on a 6 AM call while their New York colleagues join at 10 AM. Visualizing the actual overlap window lets you find a time that is genuinely fair for everyone — or honest about which direction the inconvenience falls.</p>
+
+  <h3>Hiring decisions</h3>
+  <p>Many engineering and product teams use timezone overlap as a hiring filter. A company headquartered in London might set a "minimum 4-hour overlap with GMT" rule for remote hires — effectively limiting hiring to European, African, or early East Coast US candidates. Understanding your overlap requirements before hiring avoids mismatches that show up in the first week.</p>
+
+  <h2 id="how-much-overlap">How much timezone overlap does a remote team need?</h2>
+  <p>It depends on your working style, but here's a practical framework:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Overlap window</th>
+        <th>What's possible</th>
+        <th>Typical team type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:#10b981;">5+ hours</strong></td>
+        <td>Full synchronous collaboration; standups, reviews, pair programming, client calls</td>
+        <td>Most Europe-based remote teams; US + Canada</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#10b981;">3–4 hours</strong></td>
+        <td>One good synchronous window per day; one standup + one longer meeting possible</td>
+        <td>US + UK; US East + India (just barely)</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#f59e0b;">1–2 hours</strong></td>
+        <td>One brief synchronous meeting per day; most work is async</td>
+        <td>US West + India; UK + Southeast Asia</td>
+      </tr>
+      <tr>
+        <td><strong style="color:#ef4444;">0 hours</strong></td>
+        <td>Fully async; handoff-based workflows; weekly overlap calls require early/late sacrifice</td>
+        <td>New York + Tokyo; UK + New Zealand</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="common-corridors">Timezone overlap for common remote team corridors</h2>
+  <p>Here are the actual overlap windows for the most common remote team corridor pairs, showing working hours 9 AM–5 PM local time:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Corridor</th>
+        <th>Overlap (standard time)</th>
+        <th>Overlap hours</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>London – New York</td>
+        <td>2–5 PM London / 9 AM–12 PM New York</td>
+        <td>3–4 hrs</td>
+        <td>Widens by 1 hr during US summer DST</td>
+      </tr>
+      <tr>
+        <td>London – Toronto</td>
+        <td>2–5 PM London / 9 AM–12 PM Toronto</td>
+        <td>3–4 hrs</td>
+        <td>Same as NY; most popular US–UK corridor</td>
+      </tr>
+      <tr>
+        <td>New York – Lagos</td>
+        <td>9 AM–2 PM New York / 3–8 PM Lagos</td>
+        <td>5 hrs</td>
+        <td>Nigeria does not observe DST; stable year-round</td>
+      </tr>
+      <tr>
+        <td>New York – Mumbai</td>
+        <td>9–11:30 AM New York / 7:30–10 PM Mumbai</td>
+        <td>2.5 hrs</td>
+        <td>India doesn't observe DST; shifts with US clocks</td>
+      </tr>
+      <tr>
+        <td>London – Singapore</td>
+        <td>9 AM–12 PM London / 5–8 PM Singapore</td>
+        <td>3 hrs</td>
+        <td>Shrinks to 1 hr during UK summer BST</td>
+      </tr>
+      <tr>
+        <td>San Francisco – London</td>
+        <td>5–6 PM London / 9–10 AM San Francisco</td>
+        <td>1–2 hrs</td>
+        <td>Very tight window; often requires flex hours</td>
+      </tr>
+      <tr>
+        <td>New York – Sydney</td>
+        <td>9 AM New York only (no mutual overlap)</td>
+        <td>0 hrs</td>
+        <td>Fully async; 14–15 hr difference</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Use <a href="/">SyncZones</a> to visualize any corridor — the tool handles all DST transitions automatically and lets you click any hour to instantly copy the meeting time in each team member's local timezone.</p>
+
+  <h2 id="zero-overlap">What to do with zero timezone overlap</h2>
+  <p>Some corridors — New York to Tokyo, London to Auckland, San Francisco to Seoul — have little to no mutual business-hour overlap. This isn't necessarily a dealbreaker, but it does require deliberate process design.</p>
+  <ul>
+    <li><strong style="color:#e2e8f0;">Follow-the-sun workflows:</strong> structure work as a relay — one team finishes a task and hands off clearly documented work to the other, who picks it up at the start of their day.</li>
+    <li><strong style="color:#e2e8f0;">Weekly overlap call:</strong> designate one day per week where each side adjusts by 1–2 hours (one starts early, the other finishes late) to create a shared 1-hour window.</li>
+    <li><strong style="color:#e2e8f0;">Async-first culture:</strong> use tools like Loom, Notion, and Linear to communicate decisions, blockers, and context through written/video updates rather than synchronous meetings.</li>
+    <li><strong style="color:#e2e8f0;">Rotate the sacrifice:</strong> if a meeting outside standard hours is unavoidable, rotate which team takes the early/late slot rather than it always falling on the same people.</li>
+  </ul>
+
+  <h2 id="dst">How Daylight Saving Time affects timezone overlap</h2>
+  <p>DST can shift your overlap window by up to 1 hour — sometimes in the opposite direction for each team, compounding the change to 2 hours.</p>
+  <p>The most disruptive scenario in practice is the <strong style="color:#f1f5f9;">3-week US–Europe gap</strong> every March. The US switches to DST around March 8, but most of Europe doesn't change until late March. During that 3-week window, US–Europe meetings silently shift by 1 hour even though no one changed their calendar. Read the full guide: <a href="/blog/dst-gap-us-europe-meetings/">The 3-Week DST Gap: Why Your US–Europe Meetings Break Every March</a>.</p>
+  <p>To check how your overlap shifts on a specific future date, use the date picker in <a href="/">SyncZones</a> — it recalculates in real time.</p>
+
+  <h2 id="faq">Frequently asked questions</h2>
+
+  <h3>What is timezone overlap in remote work?</h3>
+  <p>In a remote work context, timezone overlap refers to the hours during which two or more team members (or entire sub-teams) are all working simultaneously. It's the window available for real-time collaboration — video calls, standups, pair programming, or instant Slack responses.</p>
+
+  <h3>How do you calculate timezone overlap?</h3>
+  <p>Convert each team's working hours to UTC, then find the intersection (the time range that falls within all teams' windows). For example: London 09:00–17:00 UTC and New York 14:00–22:00 UTC overlap from 14:00–17:00 UTC. Tools like <a href="/">SyncZones</a> do this automatically for up to 5 zones, including DST.</p>
+
+  <h3>How much timezone overlap do remote teams need?</h3>
+  <p>Most teams need at least 2–3 hours of daily overlap to sustain regular synchronous touchpoints. Teams with less than 1 hour of overlap typically operate predominantly asynchronously. There's no universal minimum — it depends on your collaboration style and whether your work is primarily synchronous or async.</p>
+
+  <h3>What is zero timezone overlap?</h3>
+  <p>Zero overlap means no mutual business hours exist between two teams. This typically requires fully async workflows with handoffs rather than real-time collaboration. Examples: New York and Sydney, London and Auckland.</p>
+
+  <div class="tool-cta">
+    <p>Visualize your team's exact overlap window — free, no sign-up required.</p>
+    <a href="/">Open SyncZones Timezone Overlap Tool →</a>
+  </div>
+
+  <div class="related-posts">
+    <h3>More from the SyncZones blog</h3>
+    <ul>
+      <li><a href="/blog/how-to-schedule-meetings-across-time-zones/">How to Schedule Meetings Across Multiple Time Zones (Step-by-Step)</a></li>
+      <li><a href="/blog/best-meeting-time-london-new-york/">Best Meeting Time Between London and New York (2026 Guide)</a></li>
+      <li><a href="/blog/dst-gap-us-europe-meetings/">The 3-Week DST Gap: Why Your US–Europe Meetings Break Every March</a></li>
+      <li><a href="/blog/best-free-timezone-overlap-tools/">7 Best Free Timezone Overlap Tools for Remote Teams (2026)</a></li>
+    </ul>
+  </div>
+
+  <div class="author-box">
+    <div class="author-avatar">S</div>
+    <div>
+      <p class="author-name">SyncZones Team</p>
+      <p class="author-bio">We build free tools to help remote teams find fair meeting times across time zones. Questions or corrections? We'd love to hear from you.</p>
+      <a href="/">Try TimeSync free →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© <span id="yr"></span> SyncZones · <a href="/blog/">Blog</a> · <a href="/">Tool</a></p>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

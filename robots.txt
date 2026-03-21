@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.synczones.app/sitemap.xml
+Sitemap: https://synczones.app/sitemap.xml
 

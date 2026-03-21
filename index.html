@@ -3,21 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TimeSync is a free timezone overlap visualizer for remote teams that helps you quickly find meeting times across time zones and share them in one link.">
-    <title>TimeSync - Remote Team Overlap Visualizer</title>
+    <title>SyncZones — Free Timezone Overlap Visualizer for Remote Teams</title>
+    <meta name="description" content="SyncZones is a free timezone overlap visualizer for remote teams. Find shared working hours across up to 5 time zones, click any hour to copy meeting times, and share a single link — no sign-up needed.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://synczones.app/">
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TimeSync - Timezone Overlap Visualizer for Remote Teams">
-    <meta property="og:description" content="Quickly find fair meeting times across time zones, click any hour to copy local times for your team, and share a single link.">
+    <meta property="og:title" content="SyncZones — Free Timezone Overlap Visualizer for Remote Teams">
+    <meta property="og:description" content="Find shared working hours across up to 5 time zones, copy meeting times instantly, and share one link with your whole team. Free, no sign-up required.">
     <meta property="og:url" content="https://synczones.app/">
-    <meta property="og:image" content="https://synczones.app/og-image.svg">
+    <meta property="og:image" content="https://synczones.app/og-image.png">
+    <meta property="og:site_name" content="SyncZones">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TimeSync - Timezone Overlap Visualizer for Remote Teams">
-    <meta name="twitter:description" content="Visualize working-hour overlap for your remote team and share meeting times in one click.">
-    <meta name="twitter:image" content="https://synczones.app/og-image.svg">
+    <meta name="twitter:title" content="SyncZones — Free Timezone Overlap Visualizer for Remote Teams">
+    <meta name="twitter:description" content="Find shared working hours across up to 5 time zones and share one link with your team. Free, no sign-up.">
+    <meta name="twitter:image" content="https://synczones.app/og-image.png">
+
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "SyncZones Timezone Overlap Visualizer",
+      "alternateName": "TimeSync by SyncZones",
+      "url": "https://synczones.app/",
+      "description": "A free timezone overlap visualizer for remote teams. Add up to 5 time zones, see shared working hours, click any hour to copy local times, and share a single URL with your whole team.",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Any (browser-based)",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Timezone overlap visualization",
+        "Up to 5 simultaneous time zones",
+        "Shareable link with team configuration",
+        "Click-to-copy meeting times",
+        "Custom timezone renaming",
+        "Save team configuration",
+        "DST-aware scheduling"
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "SyncZones",
+        "url": "https://synczones.app"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: Organisation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SyncZones",
+      "url": "https://synczones.app",
+      "logo": "https://synczones.app/favicon.svg",
+      "description": "SyncZones builds free tools for remote teams to solve timezone scheduling challenges.",
+      "sameAs": []
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a timezone overlap visualizer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A timezone overlap visualizer shows the shared working hours between two or more teams in different time zones. SyncZones displays each team's 24-hour clock side by side, highlights business hours (9 AM–5 PM), and clearly shows which hours overlap — making it easy to find a fair meeting time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many time zones can I add to SyncZones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SyncZones supports up to 5 simultaneous time zones. You can search for any city or IANA timezone name (e.g., 'Tokyo' or 'America/Chicago'), rename each zone to a person or team, and instantly see the working-hour overlap for all five."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I share my team's timezone view?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Click the 'Copy Share Link' button. SyncZones encodes your full team configuration — all time zones, custom names, and the selected date — into the URL. Paste that link in Slack, email, or a calendar invite and anyone who opens it sees exactly your team setup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SyncZones free? Do I need to sign up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, SyncZones is completely free with no account or sign-up required. Your timezone setup is stored in the URL and optionally saved to your browser's local storage — nothing is sent to any server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does SyncZones handle Daylight Saving Time automatically?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SyncZones uses your browser's Intl API with full IANA timezone support, so DST transitions are handled automatically for every zone. Change the date in the date picker to see how your overlap window shifts during DST transitions."
+          }
+        }
+      ]
+    }
+    </script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE0E74V2HF"></script>
@@ -55,20 +155,20 @@
 </head>
 <body class="bg-slate-900 text-slate-200 min-h-screen flex flex-col font-sans selection:bg-emerald-500/30 pb-16">
 
-    <!-- Sponsored Banner -->
+    <!-- Sponsored Banner — replace href and text with your advertiser details -->
     <div class="bg-indigo-600 text-white text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
-        <i data-lucide="star" class="w-4 h-4"></i>
-        Sponsored by [Your Company] - The Best Way to Hire Remote.
+        <i data-lucide="zap" class="w-4 h-4"></i>
+        Want to reach 10,000+ remote team leads? <a href="/blog/" class="underline ml-1 hover:text-indigo-200 transition-colors">Sponsor SyncZones →</a>
     </div>
 
     <main class="flex-grow container mx-auto px-4 py-12 max-w-5xl">
         <!-- Hero Section -->
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                Time<span class="text-emerald-400">Sync</span>
+                Time<span class="text-emerald-400">Sync</span> by SyncZones
             </h1>
             <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-                Shareable Timezone Visualizer for Remote Teams. Find the perfect overlap for your next meeting.
+                Free timezone overlap visualizer for remote teams. Find shared working hours across up to 5 time zones and share them in one link — no sign-up needed.
             </p>
         </div>
 
@@ -149,9 +249,81 @@
         </div>
     </main>
 
+    <!-- About / Static SEO Section -->
+    <section class="max-w-5xl mx-auto px-4 py-12" aria-label="About SyncZones">
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6">
+                <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <i data-lucide="layers" class="w-5 h-5 text-emerald-400"></i>
+                    What is timezone overlap?
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Timezone overlap is the window of time when two or more distributed teams are simultaneously within their standard working hours. For example, a team in London (GMT) and a team in New York (EST) share roughly 9 AM–1 PM GMT as mutual business hours. SyncZones visualizes this window instantly — so you can pick a meeting time that is fair for everyone, not just one side.
+                </p>
+            </div>
+            <div class="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6">
+                <h2 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                    <i data-lucide="share-2" class="w-5 h-5 text-emerald-400"></i>
+                    How SyncZones works
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Add up to 5 time zones — search by city name or IANA identifier. Rename each zone to a team member or city. The overlap visualizer highlights shared business hours (9 AM–5 PM) across all zones. Click any hour block to copy that moment's local times to your clipboard. Hit <strong class="text-slate-300">Copy Share Link</strong> to get a URL that opens the exact same view for anyone on your team.
+                </p>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-white mb-6">Frequently asked questions</h2>
+            <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
+
+                <details class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5 group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="font-medium text-white cursor-pointer list-none flex justify-between items-center" itemprop="name">
+                        How many time zones can I compare?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform shrink-0 ml-2"></i>
+                    </summary>
+                    <div class="mt-3 text-slate-400 text-sm leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">SyncZones supports up to 5 simultaneous time zones. You can search for any city or IANA timezone (e.g., "Tokyo" or "America/Chicago"), rename each zone to a person or team, and instantly see shared working-hour overlap for the whole group.</p>
+                    </div>
+                </details>
+
+                <details class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5 group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="font-medium text-white cursor-pointer list-none flex justify-between items-center" itemprop="name">
+                        How do I share my team's timezone setup?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform shrink-0 ml-2"></i>
+                    </summary>
+                    <div class="mt-3 text-slate-400 text-sm leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Click <strong class="text-slate-300">Copy Share Link</strong>. SyncZones encodes your entire team setup — all time zones, custom names, and selected date — into a single URL. Paste it in Slack, a calendar invite, or email and everyone sees the exact same view.</p>
+                    </div>
+                </details>
+
+                <details class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5 group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="font-medium text-white cursor-pointer list-none flex justify-between items-center" itemprop="name">
+                        Does SyncZones handle Daylight Saving Time automatically?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform shrink-0 ml-2"></i>
+                    </summary>
+                    <div class="mt-3 text-slate-400 text-sm leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes. SyncZones uses your browser's built-in Intl API with full IANA timezone support, so DST transitions are handled automatically. Change the date in the date picker to see how your overlap window shifts during transitions — useful for planning ahead around the March and November DST switches.</p>
+                    </div>
+                </details>
+
+                <details class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-5 group" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="font-medium text-white cursor-pointer list-none flex justify-between items-center" itemprop="name">
+                        Is SyncZones free? Do I need to create an account?
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform shrink-0 ml-2"></i>
+                    </summary>
+                    <div class="mt-3 text-slate-400 text-sm leading-relaxed" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">SyncZones is completely free with no account or sign-up required. Your timezone setup is stored in the URL (for sharing) and optionally in your browser's local storage via <strong class="text-slate-300">Save Team</strong> — nothing is sent to any server.</p>
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="border-t border-slate-800 mt-auto py-8 text-center">
-        <p class="text-slate-500 text-sm mb-4">Built with native JS & Tailwind CSS.</p>
+        <p class="text-slate-500 text-sm mb-4">Built with native JS &amp; Tailwind CSS.</p>
         <div class="flex items-center justify-center gap-6">
             <a href="/blog/" class="text-slate-400 hover:text-slate-200 transition-colors text-sm font-medium">
                 Blog
@@ -344,7 +516,8 @@
                     try {
                         const parsed = JSON.parse(saved);
                         if (Array.isArray(parsed) && parsed.length > 0) {
-                            selectedZones = parsed.slice(0, MAX_ZONES);
+                            selectedZones = parsed.filter(z => z && typeof z.tz === 'string' && isSupportedTimezone(z.tz)).slice(0, MAX_ZONES);
+                            if (selectedZones.length === 0) throw new Error('No valid zones in saved team');
                             showToast('Your saved team has been loaded.');
                         } else {
                             throw new Error('Invalid saved team');

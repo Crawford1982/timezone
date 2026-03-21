@@ -3,10 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncZones Blog - Remote Team Timezones & Meetings</title>
-    <meta name="description" content="Deep dives on timezones, remote work, and how to run better meetings across distributed teams.">
+    <title>Timezone & Remote Team Scheduling Blog — SyncZones</title>
+    <meta name="description" content="Practical guides on scheduling across time zones, managing DST transitions, finding the best meeting times for distributed teams, and building healthy async cultures.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://synczones.app/blog/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Timezone & Remote Team Scheduling Blog — SyncZones">
+    <meta property="og:description" content="Practical guides on scheduling across time zones, managing DST transitions, and building healthy async cultures for distributed teams.">
+    <meta property="og:url" content="https://synczones.app/blog/">
+    <meta property="og:image" content="https://synczones.app/og-image.png">
+    <meta property="og:site_name" content="SyncZones">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://synczones.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://synczones.app/blog/" }
+      ]
+    }
+    </script>
+
+    <!-- Blog Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "SyncZones Blog",
+      "url": "https://synczones.app/blog/",
+      "description": "Practical guides on timezone scheduling, DST transitions, and remote team meeting strategies.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "SyncZones",
+        "url": "https://synczones.app"
+      }
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE0E74V2HF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GE0E74V2HF');
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
@@ -23,13 +70,83 @@
     </header>
 
     <main class="flex-1 max-w-5xl mx-auto px-4 py-10">
-        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">SyncZones Blog</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">Timezone &amp; Remote Scheduling Blog</h1>
+        <p class="text-slate-400 mb-2 text-sm">by <a href="/" class="text-emerald-400 hover:text-emerald-300">SyncZones</a></p>
         <p class="text-slate-400 mb-8 max-w-2xl">
-            Essays and guides on working across timezones, running better remote meetings, and building healthy async cultures.
+            Practical guides on scheduling across time zones, managing DST transitions, and building healthy async cultures for distributed teams.
         </p>
 
         <div class="space-y-6">
             <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">Scheduling Guide</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-03-21">March 2026</time>
+                </div>
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/what-is-timezone-overlap/" class="hover:text-emerald-400 transition-colors">
+                        What Is Timezone Overlap? A Complete Guide for Remote Teams
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    Understand what timezone overlap is, why it matters for distributed teams, and how to calculate and visualize shared working hours using a free tool.
+                </p>
+            </article>
+
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">How-To Guide</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-03-21">March 2026</time>
+                </div>
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/how-to-schedule-meetings-across-time-zones/" class="hover:text-emerald-400 transition-colors">
+                        How to Schedule Meetings Across Multiple Time Zones (Step-by-Step)
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    A practical framework for finding fair meeting times across 3, 4, or 5 time zones — with templates, tools, and async fallback strategies.
+                </p>
+            </article>
+
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">City-Pair Guide</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-03-21">March 2026</time>
+                </div>
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/best-meeting-time-london-new-york/" class="hover:text-emerald-400 transition-colors">
+                        Best Meeting Time Between London and New York (2026 Guide)
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    The complete scheduling guide for London–New York remote teams: overlap windows, DST shifts, and the best time slots for standups and client calls.
+                </p>
+            </article>
+
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">City-Pair Guide</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-03-21">March 2026</time>
+                </div>
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/us-india-timezone-overlap/" class="hover:text-emerald-400 transition-colors">
+                        US to India Timezone Overlap: The Complete Scheduling Guide (2026)
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    How to find a meeting window between US cities and India (IST) — with exact overlap hours, DST impact, and async strategies for engineering and sales teams.
+                </p>
+            </article>
+
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">City-Pair Guide</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-03-01">March 2026</time>
+                </div>
                 <h2 class="text-xl font-semibold text-white mb-2">
                     <a href="/blog/best-meeting-time-new-york-lagos/" class="hover:text-emerald-400 transition-colors">
                         Best Meeting Time Between New York and Lagos
@@ -41,17 +158,27 @@
             </article>
 
             <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">Tools Comparison</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-03-01">March 2026</time>
+                </div>
                 <h2 class="text-xl font-semibold text-white mb-2">
                     <a href="/blog/best-free-timezone-overlap-tools/" class="hover:text-emerald-400 transition-colors">
                         7 Best Free Timezone Overlap Tools for Remote Teams (2026)
                     </a>
                 </h2>
                 <p class="text-sm text-slate-400">
-                    Hands-on comparison of the top free timezone overlap tools, from World Time Buddy to TimeSync, with real-world pros and cons.
+                    Hands-on comparison of the top free timezone overlap tools, from World Time Buddy to SyncZones, with real-world pros and cons.
                 </p>
             </article>
 
             <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">Scheduling Guide</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-03-01">March 2026</time>
+                </div>
                 <h2 class="text-xl font-semibold text-white mb-2">
                     <a href="/blog/dst-gap-us-europe-meetings/" class="hover:text-emerald-400 transition-colors">
                         The 3-Week DST Gap: Why Your US–Europe Meetings Break Every March
