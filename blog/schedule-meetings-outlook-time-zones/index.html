@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Schedule Meetings in Different Time Zones in Outlook &amp; Teams (2026) | SyncZones</title>
+  <meta name="description" content="Schedule meetings across time zones in Outlook desktop, Outlook on the web, and Microsoft Teams. Time zone settings, recurring meetings, DST, and a shareable overlap link for your invite.">
+  <meta name="keywords" content="scheduling meetings in different time zones outlook, outlook time zone meeting, teams meeting time zone, outlook different time zones">
+  <link rel="canonical" href="https://synczones.app/blog/schedule-meetings-outlook-time-zones/">
+
+  <meta property="og:title" content="Schedule Meetings in Different Time Zones in Outlook (2026) | SyncZones">
+  <meta property="og:description" content="Outlook, Outlook on the web, and Teams: set time zones correctly, avoid DST surprises, share a SyncZones link before you send the invite.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://synczones.app/blog/schedule-meetings-outlook-time-zones/">
+  <meta property="og:image" content="https://synczones.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://synczones.app/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Schedule Meetings in Different Time Zones in Outlook and Microsoft Teams",
+    "description": "Step-by-step guide to scheduling meetings across time zones in Outlook desktop, Outlook on the web, and Teams, including recurring meetings and DST.",
+    "author": { "@type": "Person", "name": "James Crawford", "url": "https://synczones.app/" },
+    "publisher": { "@type": "Organization", "name": "SyncZones", "url": "https://synczones.app" },
+    "datePublished": "2026-04-17",
+    "dateModified": "2026-04-17",
+    "mainEntityOfPage": "https://synczones.app/blog/schedule-meetings-outlook-time-zones/"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://synczones.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://synczones.app/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Outlook time zones", "item": "https://synczones.app/blog/schedule-meetings-outlook-time-zones/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I schedule a meeting in different time zones in Outlook?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Outlook desktop, create a new meeting and add attendees. Outlook stores the event in UTC and shows each person their local time if their calendar time zone is set correctly. Before sending, confirm your own Windows time zone (Settings > Time & language) matches where you work. On Outlook on the web, use the scheduling assistant to see others’ free/busy. For Teams meetings, the organizer’s time zone drives the default slot label — always verify the absolute time for remote attendees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Microsoft Teams show time zones for every attendee?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Teams displays the meeting in each viewer’s local time when their device and account region are configured correctly. Problems usually come from wrong organizer time zone, recurring meetings that cross a DST boundary, or attendees viewing in a different app. Sharing a SyncZones link with the proposed slot in everyone’s local time reduces confusion before the invite is sent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why did my recurring Outlook meeting shift by one hour?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Recurring meetings can drift when daylight saving starts or ends in one region but not another, or when the series was created in a different time zone. Edit the series or create an exception for DST transition weeks. For US–Europe teams, see SyncZones’ DST gap guide for March and October windows."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; line-height: 1.7; margin: 0; background: #fff; }
+    .container { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-nav { font-size: 0.85rem; color: #64748b; margin-bottom: 1.25rem; }
+    .site-nav a { color: #10b981; text-decoration: none; }
+    header { border-bottom: 2px solid #10b981; padding-bottom: 1.25rem; margin-bottom: 2rem; }
+    h1 { font-size: 1.85rem; color: #0f172a; line-height: 1.3; margin: 0 0 1rem; }
+    h2 { font-size: 1.35rem; color: #0f172a; margin: 2.1rem 0 0.9rem; border-left: 4px solid #10b981; padding-left: 0.7rem; }
+    h3 { font-size: 1.05rem; color: #0f172a; margin: 1.25rem 0 0.5rem; }
+    p { margin: 0 0 1rem; }
+    a { color: #10b981; }
+    ul, ol { margin: 0 0 1rem; padding-left: 1.25rem; }
+    li { margin-bottom: 0.45rem; }
+    .meta { font-size: 0.85rem; color: #64748b; }
+    .callout { background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 1rem 1.2rem; margin: 1.2rem 0 1.5rem; }
+    .cta { background: #0f172a; border-radius: 12px; padding: 1.4rem; text-align: center; margin: 2rem 0; }
+    .cta p { color: #94a3b8; margin-bottom: 0.8rem; }
+    .cta a { display: inline-block; background: #10b981; color: #fff; text-decoration: none; font-weight: 600; padding: 0.65rem 1.2rem; border-radius: 8px; }
+    code { background: #f1f5f9; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="site-nav">
+      <a href="https://synczones.app/">Home</a> / <a href="https://synczones.app/blog/">Blog</a>
+    </div>
+
+    <header>
+      <h1>How to Schedule Meetings in Different Time Zones in Outlook &amp; Teams</h1>
+      <p class="meta">Published April 2026 · 12 min read · <a href="https://synczones.app/">SyncZones</a></p>
+    </header>
+
+    <p>If you searched for <strong>scheduling meetings in different time zones Outlook</strong>, you are in the right place. Outlook and Microsoft Teams handle UTC under the hood, but humans still get surprised by DST and “whose 10 AM?” confusion. This guide covers Outlook for Windows, Outlook on the web, Teams behaviour, recurring meetings, and a workflow that works for distributed teams.</p>
+
+    <div class="callout">
+      <strong>Workflow that works:</strong> Use <a href="https://synczones.app/">SyncZones</a> to find a fair overlap window, copy local times for everyone, <em>then</em> create the Outlook or Teams invite. Paste your <strong>Copy Share Link</strong> into the meeting description so attendees can verify times in one click.
+    </div>
+
+    <h2>Before you open Outlook: fix your system time zone</h2>
+    <p>Outlook reads your Windows or macOS clock. If your laptop time zone is wrong, every invite you send will be wrong for others even if the meeting “looks” right to you.</p>
+    <ul>
+      <li><strong>Windows:</strong> Settings → Time &amp; language → Date &amp; time → confirm time zone and “Set time zone automatically” if you travel.</li>
+      <li><strong>Mac:</strong> System Settings → General → Date &amp; Time.</li>
+    </ul>
+
+    <h2>Outlook desktop (Windows) — new meeting</h2>
+    <ol>
+      <li>Open Calendar → <strong>New Meeting</strong> (or New Teams Meeting if you want a Teams link).</li>
+      <li>Add required attendees. Open the <strong>Scheduling Assistant</strong> tab to see free/busy across organizers.</li>
+      <li>Pick a time. Outlook stores the event as an instant in time; each attendee sees local time in their calendar.</li>
+      <li>For cross-border teams, type the agreed times into the body (e.g. “09:00 PT / 17:00 London”) and add your <a href="https://synczones.app/">SyncZones share link</a>.</li>
+    </ol>
+
+    <h2>Outlook on the web</h2>
+    <p>Use the same flow: new event → scheduling assistant. Web Outlook respects your mailbox’s default time zone (check Settings → Calendar → View → Time zone). If you split time between regions, set the default to your primary work location.</p>
+
+    <h2>Microsoft Teams meetings</h2>
+    <p>Teams meetings created from Outlook inherit the same start time. Attendees in Teams see the meeting in <strong>local time</strong> on their device. Common issues:</p>
+    <ul>
+      <li><strong>Organizer time zone</strong> labels the slot in the composer — double-check it matches the slot you agreed in SyncZones.</li>
+      <li><strong>Guests</strong> without a Microsoft account still see local times in the invite email if their mail client is sane; a SyncZones link removes ambiguity.</li>
+    </ul>
+
+    <h2>Recurring meetings &amp; DST</h2>
+    <p>Recurring series are notorious when US and Europe change clocks on different weekends. The meeting’s UTC offset can move for one side. Mitigations:</p>
+    <ul>
+      <li>Schedule the next occurrence inside a <a href="https://synczones.app/blog/dst-gap-us-europe-meetings/">US–Europe DST gap</a> window with extra care.</li>
+      <li>Send a short note when offsets change; include a SyncZones link with the <strong>meeting date</strong> selected.</li>
+    </ul>
+
+    <h2>Example: London and New York</h2>
+    <p>For a standing sync between <code>Europe/London</code> and <code>America/New_York</code>, open <a href="https://synczones.app/?zones=Europe%2FLondon,America%2FNew_York">this pre-filled SyncZones view</a>, pick a slot in the green overlap, then create the Outlook invite for that instant. See also our <a href="https://synczones.app/blog/best-meeting-time-london-new-york/">London–New York meeting guide</a>.</p>
+
+    <h2>Related guides</h2>
+    <ul>
+      <li><a href="https://synczones.app/blog/meeting-scheduler-different-time-zones/">Meeting scheduler for different time zones</a> (browser tool)</li>
+      <li><a href="https://synczones.app/blog/how-to-schedule-meetings-across-time-zones/">How to schedule meetings across multiple time zones</a></li>
+      <li><a href="https://synczones.app/overlap/">Overlap guides hub</a></li>
+    </ul>
+
+    <div class="cta">
+      <p>Find overlap before you send the Outlook invite</p>
+      <a href="https://synczones.app/">Open SyncZones — free, no sign-up</a>
+    </div>
+  </div>
+</body>
+</html>

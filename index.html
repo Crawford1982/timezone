@@ -119,15 +119,8 @@
     }
     </script>
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE0E74V2HF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-GE0E74V2HF');
-    </script>
+    <!-- GA4 loads only after cookie consent (see analytics.js + consent banner) -->
+    <script src="/analytics.js"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -158,17 +151,17 @@
     <!-- Sponsored Banner — replace href and text with your advertiser details -->
     <div class="bg-indigo-600 text-white text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
         <i data-lucide="zap" class="w-4 h-4"></i>
-        Want to reach 10,000+ remote team leads? <a href="mailto:1982crawford@gmail.com?subject=Sponsoring%20SyncZones" class="underline ml-1 hover:text-indigo-200 transition-colors">Sponsor SyncZones →</a>
+        Want to reach remote team leads? <a href="/advertise/" class="underline ml-1 hover:text-indigo-200 transition-colors">Advertise on SyncZones →</a>
     </div>
 
     <main class="flex-grow container mx-auto px-4 py-12 max-w-5xl">
         <!-- Hero Section -->
         <div class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                Free <span class="text-emerald-400">Timezone Overlap</span> Visualizer
+                <span class="text-white">SyncZones:</span> Free <span class="text-emerald-400">Timezone Overlap</span> Visualizer
             </h1>
             <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-                SyncZones helps remote teams find shared working hours across up to 5 time zones instantly. Visualize timezone overlap, click any hour to copy meeting times, and share one link with your whole team — no sign-up needed.
+                A free <strong class="text-slate-300 font-medium">timezone</strong> and <strong class="text-slate-300 font-medium">time zone</strong> overlap visualizer for remote teams: find shared working hours across up to 5 regions, click any hour to copy meeting times, and share one link — no sign-up needed.
             </p>
         </div>
 
@@ -219,11 +212,13 @@
                     <li>Use <strong class="text-slate-300">Save Team</strong> to remember your core zones for next time on this device.</li>
                 </ul>
                 <p class="mt-3 text-xs text-slate-500">
-                    Want deeper help? Read our corridor and scheduling guides in the <a href="/blog/" class="text-emerald-400 hover:text-emerald-300 underline-offset-2 hover:underline">SyncZones blog</a>, including
-                    a practical <a href="/blog/meeting-scheduler-different-time-zones/" class="text-emerald-400 hover:text-emerald-300">meeting scheduler for different time zones</a> guide,
-                    practical playbooks for <a href="/blog/best-meeting-time-new-york-lagos/" class="text-emerald-400 hover:text-emerald-300">New York ↔ Lagos</a>,
-                    <a href="/blog/dst-gap-us-europe-meetings/" class="text-emerald-400 hover:text-emerald-300">US ↔ Europe during DST season</a>,
-                    and a comparison of <a href="/blog/best-free-timezone-overlap-tools/" class="text-emerald-400 hover:text-emerald-300">the main timezone overlap tools</a> for remote teams.
+                    Want deeper help? See <a href="/overlap/" class="text-emerald-400 hover:text-emerald-300 underline-offset-2 hover:underline">overlap guides by corridor</a>, the
+                    <a href="/blog/meeting-scheduler-different-time-zones/" class="text-emerald-400 hover:text-emerald-300">meeting scheduler for different time zones</a> guide,
+                    <a href="/blog/schedule-meetings-outlook-time-zones/" class="text-emerald-400 hover:text-emerald-300">Outlook &amp; time zones</a>, and the full
+                    <a href="/blog/" class="text-emerald-400 hover:text-emerald-300 underline-offset-2 hover:underline">SyncZones blog</a>
+                    (<a href="/blog/best-meeting-time-new-york-lagos/" class="text-emerald-400 hover:text-emerald-300">New York ↔ Lagos</a>,
+                    <a href="/blog/dst-gap-us-europe-meetings/" class="text-emerald-400 hover:text-emerald-300">US–Europe DST</a>,
+                    <a href="/blog/best-free-timezone-overlap-tools/" class="text-emerald-400 hover:text-emerald-300">tool comparison</a>).
                 </p>
             </div>
         </div>
@@ -248,6 +243,40 @@
                 </div>
             </div>
         </div>
+
+        <!-- Popular guides (internal links to money pages) -->
+        <section class="mb-12" aria-label="Popular scheduling guides">
+            <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <i data-lucide="book-open" class="w-5 h-5 text-emerald-400"></i>
+                Popular guides
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                <a href="/blog/meeting-scheduler-different-time-zones/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">Meeting scheduler</span> — Multi–time zone scheduler (free, no sign-up)
+                </a>
+                <a href="/blog/schedule-meetings-outlook-time-zones/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">Outlook</span> — Schedule meetings across time zones in Outlook &amp; Teams
+                </a>
+                <a href="/blog/how-to-schedule-meetings-across-time-zones/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">How-to</span> — Step-by-step scheduling across 3–5 time zones
+                </a>
+                <a href="/blog/what-is-timezone-overlap/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">Basics</span> — What is time zone overlap?
+                </a>
+                <a href="/overlap/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">Corridors</span> — City-pair overlap hub (London–NY, US–India, …)
+                </a>
+                <a href="/blog/best-meeting-time-london-new-york/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">London–New York</span> — Best meeting times &amp; DST
+                </a>
+                <a href="/blog/dst-gap-us-europe-meetings/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">DST gap</span> — US–Europe “broken meeting” weeks
+                </a>
+                <a href="/blog/best-free-timezone-overlap-tools/" class="block bg-slate-800/60 border border-slate-700/80 rounded-xl px-4 py-3 text-slate-300 hover:border-emerald-500/50 hover:text-white transition-colors">
+                    <span class="text-emerald-400 font-medium">Tools</span> — Free overlap tools compared (2026)
+                </a>
+            </div>
+        </section>
     </main>
 
     <!-- About / Static SEO Section -->
@@ -325,9 +354,12 @@
     <!-- Footer -->
     <footer class="border-t border-slate-800 mt-auto py-8 text-center">
         <p class="text-slate-500 text-sm mb-4">Built with native JS &amp; Tailwind CSS.</p>
-        <div class="flex items-center justify-center gap-6">
+        <div class="flex flex-wrap items-center justify-center gap-6">
             <a href="/blog/" class="text-slate-400 hover:text-slate-200 transition-colors text-sm font-medium">
                 Blog
+            </a>
+            <a href="/advertise/" class="text-slate-400 hover:text-slate-200 transition-colors text-sm font-medium">
+                Advertise
             </a>
             <a href="https://ko-fi.com/jamescrawford80269" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors text-sm font-medium">
                 <i data-lucide="coffee" class="w-4 h-4"></i>
@@ -471,7 +503,11 @@
         });
 
         window.acceptCookies = function() {
-            localStorage.setItem('cookieConsent', 'true');
+            if (typeof window.synczonesAcceptAnalyticsCookies === 'function') {
+                window.synczonesAcceptAnalyticsCookies();
+            } else {
+                localStorage.setItem('cookieConsent', 'true');
+            }
             document.getElementById('consent-banner').classList.add('hidden');
         }
 

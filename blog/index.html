@@ -45,15 +45,7 @@
     }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GE0E74V2HF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GE0E74V2HF');
-    </script>
-
+    <script src="/analytics.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
@@ -77,6 +69,22 @@
         </p>
 
         <div class="space-y-6">
+            <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">Microsoft 365</span>
+                    <span class="text-xs text-slate-600">·</span>
+                    <time class="text-xs text-slate-500" datetime="2026-04-17">April 2026</time>
+                </div>
+                <h2 class="text-xl font-semibold text-white mb-2">
+                    <a href="/blog/schedule-meetings-outlook-time-zones/" class="hover:text-emerald-400 transition-colors">
+                        How to Schedule Meetings in Different Time Zones in Outlook &amp; Teams
+                    </a>
+                </h2>
+                <p class="text-sm text-slate-400">
+                    Outlook desktop, Outlook on the web, and Teams: time zone settings, recurring meetings, DST, and sharing a SyncZones link in the invite.
+                </p>
+            </article>
+
             <article class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/60 transition-colors">
                 <div class="flex items-center gap-2 mb-2">
                     <span class="text-xs text-emerald-400 font-medium uppercase tracking-wide">Tool Guide</span>
@@ -211,8 +219,13 @@
         © <span id="year"></span> SyncZones. All rights reserved.
     </footer>
 
+    <div id="consent-banner" class="fixed bottom-0 left-0 right-0 bg-slate-800 border-t border-slate-700 p-4 z-40 flex flex-col sm:flex-row items-center justify-center gap-4 hidden shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+        <p class="text-sm text-slate-300 text-center sm:text-left">We use cookies for analytics if you accept. <a href="/" class="text-emerald-400 hover:underline">Privacy</a></p>
+        <button type="button" onclick="if(typeof synczonesAcceptAnalyticsCookies==='function')synczonesAcceptAnalyticsCookies();else localStorage.setItem('cookieConsent','true');document.getElementById('consent-banner').classList.add('hidden')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-lg text-sm font-medium">Accept</button>
+    </div>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+        if (!localStorage.getItem('cookieConsent')) document.getElementById('consent-banner').classList.remove('hidden');
     </script>
 </body>
 </html>

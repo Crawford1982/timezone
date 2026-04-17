@@ -1,7 +1,11 @@
 # SyncZones AI crawler policy
 
-# You can adjust this later if your preferences change.
-
 allow: *
 site: https://synczones.app/
 
+# Key URLs
+home: https://synczones.app/
+blog: https://synczones.app/blog/
+overlap hub: https://synczones.app/overlap/
+advertise: https://synczones.app/advertise/
+tool: free timezone / time zone overlap visualizer, up to 5 zones, shareable URL, optional Save Team (localStorage)
