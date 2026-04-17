@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Zone Overlap Guides by Corridor | SyncZones</title>
-    <meta name="description" content="Find the best meeting times between major regions: London–New York, US–India, New York–Lagos, and more. Free overlap visualizer + deep-dive guides.">
+    <title>What Is Time Zone Overlap? Corridor Guides &amp; Tool | SyncZones</title>
+    <meta name="description" content="Time zone overlap is when everyone’s working hours intersect. See corridor guides (London–NY, US–India, NY–Lagos), DST tips, and a free overlap visualizer — no sign-up.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="canonical" href="https://synczones.app/overlap/">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Time Zone Overlap Guides by Corridor | SyncZones">
-    <meta property="og:description" content="City-pair and corridor guides for fair remote meeting times, plus a free multi-time zone overlap tool.">
+    <meta property="og:title" content="Time Zone Overlap Guides &amp; Free Visualizer | SyncZones">
+    <meta property="og:description" content="Understand time zone overlap, browse major corridors, and open the free SyncZones overlap tool.">
     <meta property="og:url" content="https://synczones.app/overlap/">
     <meta property="og:image" content="https://synczones.app/og-image.png">
 
@@ -21,6 +21,39 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://synczones.app/" },
         { "@type": "ListItem", "position": 2, "name": "Overlap guides", "item": "https://synczones.app/overlap/" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is time zone overlap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Time zone overlap is the period when two or more people, each in a different time zone, are all within their normal working hours at the same moment. Finding that window is how you schedule meetings across time zones without asking someone to join at 6 AM or 10 PM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is time zone overlap different from a timezone converter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A converter answers what time it is in Tokyo now. Overlap answers when everyone’s 9-to-5 style hours intersect on a given date — which matters for recurring meetings and DST, not just a single clock reading."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do corridor guides matter for remote teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Popular routes like London–New York or US–India have predictable overlap patterns, but they still shift with daylight saving. Corridor guides explain those patterns so you can pick fair slots and avoid the US–Europe DST gap weeks."
+          }
+        }
       ]
     }
     </script>
@@ -42,20 +75,33 @@
     </header>
 
     <main class="flex-1 max-w-3xl mx-auto px-4 py-12">
-        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Time zone overlap by corridor</h1>
-        <p class="text-slate-400 mb-8 leading-relaxed">
-            Use the <a href="/" class="text-emerald-400 hover:underline">SyncZones overlap visualizer</a> to see shared working hours, then open a guide for your route.
-            These pages target <strong class="text-slate-300">time zone</strong> and <strong class="text-slate-300">timezone</strong> scheduling intent — fair slots, DST caveats, and shareable links.
-        </p>
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Time zone overlap: guides &amp; tool</h1>
 
-        <h2 class="text-lg font-semibold text-white mb-4">City &amp; region pairs</h2>
-        <ul class="space-y-3 mb-10">
+        <div class="prose prose-invert prose-slate max-w-none text-slate-400 space-y-4 mb-10">
+            <p>
+                <strong class="text-slate-200">Time zone overlap</strong> (often spelled <strong class="text-slate-200">timezone overlap</strong>) is the shared window where everyone you’re scheduling with is in “normal work hours” at the same instant.
+                It’s the answer to “when can we actually meet?” — not merely what time it is in another city.
+            </p>
+            <p>
+                SyncZones draws that window as a <strong class="text-slate-200">free overlap visualizer</strong>: up to five regions, business hours highlighted, click any column to copy times, and one shareable URL for Slack or calendar invites.
+                Pair this hub with the guides below when you care about a <strong class="text-slate-200">specific corridor</strong> (transatlantic, US–India, US–Africa) or <strong class="text-slate-200">Outlook / Teams</strong> behaviour.
+            </p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 mb-10">
+            <h2 class="text-lg font-semibold text-white mb-3">Use the tool first</h2>
+            <p class="text-slate-400 text-sm mb-4">Add zones, pick the meeting date, then copy times or share the link before you lock the slot in Outlook or Google Calendar.</p>
+            <a href="/" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-6 py-3 rounded-xl transition-colors">Open SyncZones — free, no sign-up</a>
+        </div>
+
+        <h2 class="text-xl font-semibold text-white mb-4">City &amp; region pairs</h2>
+        <ul class="space-y-3 mb-10 text-slate-300">
             <li>
                 <a href="/blog/best-meeting-time-london-new-york/" class="text-emerald-400 hover:underline font-medium">London ↔ New York</a>
                 <span class="text-slate-500 text-sm"> — overlap windows, transatlantic DST</span>
             </li>
             <li>
-                <a href="/?zones=Europe%2FLondon,America%2FNew_York" class="text-emerald-400 hover:underline font-medium">Open London &amp; New York in the tool</a>
+                <a href="/?zones=Europe%2FLondon,America%2FNew_York" class="text-emerald-400 hover:underline font-medium">Pre-filled: London &amp; New York in the tool</a>
             </li>
             <li>
                 <a href="/blog/us-india-timezone-overlap/" class="text-emerald-400 hover:underline font-medium">US ↔ India (IST)</a>
@@ -70,15 +116,29 @@
             </li>
         </ul>
 
-        <h2 class="text-lg font-semibold text-white mb-4">Scheduling workflows</h2>
+        <h2 class="text-xl font-semibold text-white mb-4">Scheduling workflows</h2>
         <ul class="space-y-2 text-slate-300 mb-10">
-            <li><a href="/blog/meeting-scheduler-different-time-zones/" class="text-emerald-400 hover:underline">Meeting scheduler for different time zones</a> (free, browser-based)</li>
-            <li><a href="/blog/schedule-meetings-outlook-time-zones/" class="text-emerald-400 hover:underline">Outlook &amp; Microsoft Teams time zones</a></li>
+            <li><a href="/blog/meeting-scheduler-different-time-zones/" class="text-emerald-400 hover:underline">Meeting scheduler for different time zones</a> — browser workflow</li>
+            <li><a href="/blog/schedule-meetings-outlook-time-zones/" class="text-emerald-400 hover:underline">Schedule meetings across time zones in Outlook &amp; Teams</a></li>
             <li><a href="/blog/how-to-schedule-meetings-across-time-zones/" class="text-emerald-400 hover:underline">How to schedule meetings across multiple time zones</a></li>
-            <li><a href="/blog/what-is-timezone-overlap/" class="text-emerald-400 hover:underline">What is timezone overlap?</a></li>
+            <li><a href="/blog/what-is-timezone-overlap/" class="text-emerald-400 hover:underline">What is timezone overlap? (long-form guide)</a></li>
         </ul>
 
-        <a href="/" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-6 py-3 rounded-xl transition-colors">Open the overlap tool</a>
+        <h2 class="text-xl font-semibold text-white mb-3">FAQ</h2>
+        <dl class="space-y-4 text-slate-400 text-sm">
+            <div>
+                <dt class="text-slate-200 font-medium">What is time zone overlap?</dt>
+                <dd class="mt-1">The period when everyone’s working hours intersect — the fair window for live meetings.</dd>
+            </div>
+            <div>
+                <dt class="text-slate-200 font-medium">Overlap vs. a “timezone overlap calculator”?</dt>
+                <dd class="mt-1">Same intent: find intersecting hours. SyncZones emphasizes a visual grid and shareable link rather than a single number.</dd>
+            </div>
+            <div>
+                <dt class="text-slate-200 font-medium">Does this page replace corridor blog posts?</dt>
+                <dd class="mt-1">No — it routes you to them. Use this hub for internal linking and quick navigation; use each guide for depth.</dd>
+            </div>
+        </dl>
     </main>
 
     <div id="consent-banner" class="fixed bottom-0 left-0 right-0 bg-slate-800 border-t border-slate-700 p-4 z-40 flex flex-col sm:flex-row items-center justify-center gap-4 hidden">
